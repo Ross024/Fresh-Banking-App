@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ASPProject.ViewModels.ClientAccountsVM>
+
+@{
+    ViewData["Title"] = "Account Summary";
+}
+
+<h1>Account Summary</h1>
+
+<p>
+    <a asp-action="Create">Create New Bank Account</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.accountNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.firstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.accountType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.accountNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.accountType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { clientID = item.clientID, accountNum = item.accountNum }) |
+                @Html.ActionLink("Details", "Details", new { clientID=item.clientID, accountNum=item.accountNum }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
